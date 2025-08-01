@@ -1,6 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 interface Product {
   id?: string;
@@ -27,24 +28,19 @@ export function ProductCard({
         "bg-gray-50 rounded-xl overflow-hidden shadow-md transition-all duration-300 relative",
         isVisible
           ? "hover:shadow-lg transform hover:scale-105"
-          : "blur-sm opacity-75 cursor-not-allowed",
+          : "cursor-not-allowed",
         className
       )}
     >
-      {!isVisible && (
-        <div className="absolute inset-0 bg-black bg-opacity-20 z-10 flex items-center justify-center">
-          <div className="bg-white px-3 py-1 rounded-lg shadow-md">
-            <span className="text-xs font-medium text-blue-700">
-              Select Budget
-            </span>
-          </div>
-        </div>
-      )}
-
-      <img
+      <Image
         src={product.imageUrl}
         alt={product.name}
-        className="w-full h-48 object-cover"
+        width={300}
+        height={192}
+        className={cn(
+          "w-full h-48 object-cover",
+          !isVisible && "blur-[2px] brightness-50 saturate-50"
+        )}
         loading="lazy"
       />
 

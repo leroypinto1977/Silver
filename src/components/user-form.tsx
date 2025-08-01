@@ -33,10 +33,6 @@ export function UserForm({ onBudgetChange, selectedBudget }: UserFormProps) {
     onBudgetChange(budgetValue || null);
   };
 
-  const selectedBudgetLabel =
-    budgetOptions.find((option) => option.value === selectedBudget)?.label ||
-    "Select your budget";
-
   return (
     <div className="bg-white shadow-xl rounded-lg p-6">
       <h2 className="text-2xl font-semibold text-blue-900 mb-4">

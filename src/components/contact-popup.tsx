@@ -1,6 +1,6 @@
 "use client";
 
-import { Phone, Mail, MessageCircle } from "lucide-react";
+import { Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface ContactPopupProps {
@@ -40,8 +40,8 @@ export function ContactPopup({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="bg-white rounded-lg max-w-md w-full p-6">
+    <div className="fixed inset-0 backdrop-blur-sm bg-white bg-opacity-20 flex items-center justify-center z-50">
+      <div className="bg-white rounded-lg max-w-md w-full p-6 shadow-2xl border">
         <div className="text-center">
           <h2 className="text-2xl font-semibold text-blue-900">
             Get Your Quote

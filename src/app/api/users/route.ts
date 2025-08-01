@@ -1,8 +1,9 @@
 import { NextResponse } from "next/server";
 import { insertUserSchema } from "@/lib/schema";
+import { User } from "@/lib/schema";
 
 // In-memory storage for users
-let users: any[] = [];
+const users: User[] = [];
 
 export async function POST(request: Request) {
   try {
@@ -23,7 +24,8 @@ export async function POST(request: Request) {
     users.push(newUser);
     
     return NextResponse.json(newUser, { status: 201 });
-  } catch (error: any) {
-    return NextResponse.json({ message: "Invalid user data", error: error.message }, { status: 400 });
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    return NextResponse.json({ message: "Invalid user data", error: errorMessage }, { status: 400 });
   }
 }
